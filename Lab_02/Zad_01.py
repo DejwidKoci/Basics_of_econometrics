@@ -42,7 +42,7 @@ print(f"Standard error: {se}, zatem wartości empiryczne spożycia mięsa (y) od
 print(f"Min absolute error: {mae}, czyli średnia z wartości bezwzględnych reszt wynosi {mae}")
 print(f"Coefficient of random variation: {wzl}. Odchylenie standardowe reszt stanowi {wzl * 100}% średniej wartości sporzycia mięsa."
       "Dopasowanie modelu można uznać za dostatecznie dobre")
-print("Test F: ")
+print("Test F: ", end = "")
 if f > f_s:
     print("Odrzucamy hipotezę zerową: parametr jest statystycznie isototny")
 else:
