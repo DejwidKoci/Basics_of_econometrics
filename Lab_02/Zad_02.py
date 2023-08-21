@@ -2,9 +2,9 @@ import pandas as pd
 import scipy.stats as stats
 import numpy as np
 
-data = pd.read_excel("dane.xlsx")
-x = data["Dochód"]
-y = data["Spożycie mięsa"]
+data = pd.read_excel("dane.xlsx", sheet_name = "data_02")
+x = data["Zużycie surowca"]
+y = data["Produkcja"]
 
 b1, b2, r, p, std_error = stats.linregress(x, y)
 #b1, b2 = np.polyfit(x, y, 1)
@@ -24,17 +24,19 @@ f = (n - k - 1) / k * r_squared/(1 - r_squared)
 f_s = stats.f.ppf(1 - 0.05, k, n - 2)
 
 
-print(f"Model: {round(b1,2)}x + {round(b2,2)}")
+
+
+print(f"Model: {round(b1,2)}x {round(b2,2)}")
 #print(f"Model: {round(b1,2)}x + {round(b2,2)}")
-print(f"Interpretacja parametru b1: Jeśli dochód wzrośnie o jednostkę to spożycie mięsa wzrośnie średnio o {b1} kg na osobę")
+print(f"Interpretacja parametru b1: Jeśli zużycie surowca wzrośnie o jednostkę to produkcja wzrośnie średnio o {b1} jednostkę")
 print("R-value: ", r)
 print("p-value: ", p)
 print("Standard error of the parametr: ", std_error)
-print(f"R-squared: {r_squared}, zatem {r_squared} całkowitej zmienności spożycia mięsa (y) zostało wyjaśnione modelem. " )
-print(f"Standard error: {se}, zatem wartości empiryczne spożycia mięsa (y) odchylają się przeciennie(średnio)" 
-      f" o {se} kilograma na osobę od wartości  teoretycznych wyznaczonych na podstawie modelu")
+print(f"R-squared: {r_squared}, zatem {r_squared} całkowitej zmienności produkcji (y) zostało wyjaśnione modelem. " )
+print(f"Standard error: {se}, zatem wartości empiryczne produkcji (y) odchylają się przeciennie (średnio)" 
+      f" o {se} jednostek od wartości teoretycznych wyznaczonych na podstawie modelu")
 print(f"Min absolute error: {mae}, czyli średnia z wartości bezwzględnych reszt wynosi {mae}")
-print(f"Coefficient of random variation: {wzl}. Odchylenie standardowe reszt stanowi {wzl * 100}% średniej wartości spożycia mięsa."
+print(f"Coefficient of random variation: {wzl}. Odchylenie standardowe reszt stanowi {wzl * 100}% średniej wartości produkcji."
       "Dopasowanie modelu można uznać za dostatecznie dobre")
 print("Test F: ", end = "")
 if f > f_s:
