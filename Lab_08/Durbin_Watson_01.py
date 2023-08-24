@@ -8,7 +8,6 @@ residuals = data['et']
 
 d_value = durbin_watson(residuals)
 
-# Wyświetl wynik testu Durbina-Watsona
 print("Wynik testu Durbina-Watsona:")
 print(f"Wartość statystyki Durbina-Watsona: {d_value}")
 
