@@ -11,6 +11,7 @@ y = data["Y"]
 def forward_stepwise_regression(X, y, threshold=0.05):
     included = []
     remaining_features = X.columns.tolist()
+    print(remaining_features)
     
     while remaining_features:
         best_pvalue = 1
@@ -18,6 +19,7 @@ def forward_stepwise_regression(X, y, threshold=0.05):
         
         for feature in remaining_features:
             model = sm.OLS(y, sm.add_constant(X[included + [feature]])).fit()
+            print(model.summary())
             p_value = model.pvalues[feature]
             
             if p_value < best_pvalue:
