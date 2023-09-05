@@ -15,9 +15,9 @@ print("Wartość p:", p_value)
 
 alpha = 0.05
 if p_value < alpha:
-    print("Odrzucamy hipotezę zerową - istnieje statystycznie istotna różnica między grupami.")
+    print("Odrzucamy hipotezę zerową - wartość współczynnika korelacji jest różna od zera.")
 else:
-    print("Nie ma podstaw do odrzucenia hipotezy zerowej - brak statystycznie istotnej różnicy między grupami.")
+    print("Nie ma podstaw do odrzucenia hipotezy zerowej - współczynnik korealcji jest równy zero.")
 
 
 # wykres
