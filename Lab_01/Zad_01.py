@@ -1,6 +1,7 @@
 import pandas as pd
 import scipy.stats as stats
 import matplotlib.pyplot as plt
+import numpy as np
 
 dane = pd.read_excel("dane.xlsx")
 dochod = dane["Dochód"]
@@ -8,16 +9,18 @@ mieso = dane["Spożycie mięsa"]
 
 
 # test t
-t_statistic, p_value = stats.ttest_ind(dochod, mieso)
-
+rxy, p_value = stats.pearsonr(dochod, mieso)
+t_statistic = (abs(rxy) / np.sqrt(1 - rxy**2)) * np.sqrt(dane.shape[0] - 2)
+alpha = 0.05
+print(dane.shape[0])
+t_emp = stats.t.ppf(1 - alpha, dane.shape[0] - 2)
 print("Wartość statystyki t:", t_statistic)
-print("Wartość p:", p_value)
 
 alpha = 0.05
-if p_value < alpha:
-    print("Odrzucamy hipotezę zerową - istnieje statystycznie istotna różnica między grupami.")
+if abs(t_statistic) > t_emp:
+    print("Odrzucamy hipotezę zerową - wartość współczynnika korelacji jest różna od zera.")
 else:
-    print("Nie ma podstaw do odrzucenia hipotezy zerowej - brak statystycznie istotnej różnicy między grupami.")
+    print("Nie ma podstaw do odrzucenia hipotezy zerowej - współczynnik korealcji jest równy zero.")
 
 
 # wykres
