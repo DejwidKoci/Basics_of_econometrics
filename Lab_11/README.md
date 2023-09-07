@@ -60,5 +60,5 @@ where:
 - $\gamma_2 = \beta_2 - \beta_4$
 - $\gamma_3 = \beta_3 - \beta_4$
 
-Then $c_l$ - parameter evaluations l report the average magnitude of seasonal effects in
+Then $c_l$ - parameter evaluations $\gamma_l$ report the average magnitude of seasonal effects in
 in relation to the size of the explained variable in Q4, $l = 1, 2, 3$.
